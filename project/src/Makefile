@@ -11,7 +11,7 @@ AS              = msp430-elf-as
 all: play.elf 
 
 #additional rules for files
-play.elf: ${COMMON_OBJECTS} main.o stateMachines.o led.o wdInterruptHandler.o buzzer.o switches.o p1_interrupt_handler.o ../lib/libTimer.a
+play.elf: ${COMMON_OBJECTS} p1_interrupt_handler.o led.o switches.o main.o ../lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 load: play.elf
@@ -20,16 +20,3 @@ load: play.elf
 clean:
 	rm -f *.o *.elf
 
-main.o: led.h buzzer.h switches.h libTimer.h main.c
-
-led.o: led.h switches.h led.c
-
-wdInterruptHandler.o: stateMachines.h
-
-p1_interrupt_handler.o: switches.h p1_interrupt_handler.c
-
-stateMachines.o: led.h stateMachines.h
-
-switches.o: switches.h switches.c
-
-buzzer.o: buzzer.h buzzer.c

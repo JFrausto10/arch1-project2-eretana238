@@ -15,7 +15,7 @@ play.elf: ${COMMON_OBJECTS} main.o stateMachines.o led.o wdInterruptHandler.o bu
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 load: play.elf
-	msp430loader.sh play.elf
+	msp430loader.sh $^
 
 clean:
 	rm -f *.o *.elf

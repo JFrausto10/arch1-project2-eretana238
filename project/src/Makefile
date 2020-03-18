@@ -7,11 +7,12 @@ LDFLAGS		= -L/opt/ti/msp430_gcc/include
 #switch the compiler (for the internal make rules)
 CC              = msp430-elf-gcc
 AS              = msp430-elf-as
-AS				= $(CC)
+AS		= $(CC)
+
 all: play.elf 
 
 #additional rules for files
-blink.elf: ${COMMON_OBJECTS} main.o stateMachines.o led.o wdInterruptHandler.o ../lib/libTimer.a
+play.elf: ${COMMON_OBJECTS} main.o stateMachines.o led.o wdInterruptHandler.o switches.o stateMachines.o p1_interrupt_handler.o ../lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 load: play.elf
@@ -20,8 +21,15 @@ load: play.elf
 clean:
 	rm -f *.o *.elf
 
-led.o: led.c led.h
+main.o: led.h switches.h main.c
+
+led.o: led.c led.h switches.h
 
 wdInterruptHandler.o: stateMachines.h
 
-stateMachines.o: led.h stateMachines.h
+p1_interrupt_handler.o: switches.h
+
+stateMachines.o: led.h stateMachines.h 
+
+switches.o: switches.h switches.c
+

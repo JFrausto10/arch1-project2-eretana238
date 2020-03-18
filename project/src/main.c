@@ -11,7 +11,6 @@ int main(void) {
   switch_init();
   
   led_init();
-  /* check state here?? */
 
   enableWDTInterrupts();	/* enable periodic interrupt */
 

@@ -2,7 +2,8 @@
 #include "stateMachines.h"
 #include "led.h"
 
-static char state = 0;
+char state;
+char blinking_state;
 
 void state_advance() {
   /* alternate between toggling red & green */

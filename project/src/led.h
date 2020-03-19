@@ -6,7 +6,7 @@
 #define LEDS (BIT0 | BIT6)
 
 extern char blinking_state;
-extern static char led_state;
+extern char led_state;
 extern unsigned char red_on, green_on;
 extern unsigned char led_changed;
 

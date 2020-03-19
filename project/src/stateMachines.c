@@ -38,13 +38,8 @@ void state_advance() {
       led_red_on();
       break;
     case 2:
-<<<<<<< HEAD
-      blinking_state = 1;
-      toggle_leds();
-=======
       blinking_state = 0; /* 0 == dimming lights */
       led_green_on();
->>>>>>> fbdffb44244f25acf7d138b7effa3b97add4e6c4
       break;
     case 3:
       blinking_state = 1;

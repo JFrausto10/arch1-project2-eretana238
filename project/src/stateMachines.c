@@ -1,6 +1,7 @@
 #include <msp430.h>
 #include "stateMachines.h"
 #include "led.h"
+#include "soundEngine.h"
 
 char state; /* general state switched when pressing another button */
 char blinking_state; /* either blinking slow (1) or really fast (0) */
@@ -24,6 +25,7 @@ void state_advance() {
     case 3:
       blinking_state = 1;
       toggle_leds();
+      play_song();
       break;
   }
   

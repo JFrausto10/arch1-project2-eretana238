@@ -4,6 +4,7 @@
 #include "led.h"
 #include "switches.h"
 #include "buzzer.h"
+#include "soundEngine.h"
 
 int main(void) {
   /* setup master oscillator, CPU & peripheral clocks */
@@ -14,6 +15,8 @@ int main(void) {
   led_init();
 
   buzzer_init();
+
+  soundEngine_init();
 
   enableWDTInterrupts();	/* enable periodic interrupt */
 

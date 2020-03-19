@@ -12,7 +12,7 @@ __interrupt_vec(WDT_VECTOR) WDT(){	/* 250 interrupts/sec */
     time_frame = 125;
 
   else if(state == 3) /* last state */
-    time_frame = (char)(1500 / bpm);
+    time_frame = (char)((1500 / bpm) * 2);
   
   else
     time_frame = 1;

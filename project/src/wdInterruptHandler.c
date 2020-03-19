@@ -7,9 +7,12 @@ __interrupt_vec(WDT_VECTOR) WDT(){	/* 250 interrupts/sec */
   static char blink_count = 0;
   static char time_frame;
   
-  if(state == 0 || state == 3)
+  if(state == 0)
     time_frame = 125;
 
+  else if(state == 3) /* last state */
+    time_frame = 60;
+  
   else
     time_frame = 1;
 

@@ -51,5 +51,5 @@ void update_state() {
   else if(switch_state_down3)
     state = 2;
   else if(switch_state_down4)
-    state = 4;
+    state = 3;
 }

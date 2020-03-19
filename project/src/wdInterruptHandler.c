@@ -5,10 +5,16 @@ void
 __interrupt_vec(WDT_VECTOR) WDT(){	/* 250 interrupts/sec */
   /* check for any updates here */
   static char blink_count = 0;
-  char rate = 0;
+  static char time_frame;
+  
+  if(state == 0 || state == 3)
+    time_frame = 125;
 
-  if (++blink_count == 125) {
-    state_advance();
-    blink_count = 0;
-  }
+  else
+    time_frame = 1;
+
+  if (++blink_count == time_frame) {
+      state_advance();
+      blink_count = 0;
+    }
 }

@@ -14,16 +14,17 @@ void state_advance() {
       break;
     case 1:
       blinking_state = 0; /* 0 == dimming lights */
-      toggle_leds();
+      led_red_on();
       break;
     case 2:
-      toggle_leds();
+      blinking_state = 0; /* 0 == dimming lights */
+      led_green_on();
       break;
     case 3:
       toggle_leds();
       break;
   }
-    
+  
   led_changed = 1;
   led_update();
 }

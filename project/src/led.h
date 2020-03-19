@@ -6,12 +6,16 @@
 #define LEDS (BIT0 | BIT6)
 
 extern char blinking_state;
-extern unsigned char led_state;
+extern static char led_state;
 extern unsigned char red_on, green_on;
 extern unsigned char led_changed;
 
 void toggle_leds();
 void led_init();
 void led_update();
+
+void led_red_on();
+void led_green_on();
+void led_reset();
 
 #endif // included

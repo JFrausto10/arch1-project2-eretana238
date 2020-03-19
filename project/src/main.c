@@ -3,6 +3,7 @@
 #include "libTimer.h"
 #include "led.h"
 #include "switches.h"
+#include "buzzer.h"
 
 int main(void) {
   /* setup master oscillator, CPU & peripheral clocks */
@@ -11,6 +12,9 @@ int main(void) {
   switch_init();
   
   led_init();
+
+  buzzer_init();
+  buzzer_set_period(1000);	/* start buzzing!!! */
 
   enableWDTInterrupts();	/* enable periodic interrupt */
 

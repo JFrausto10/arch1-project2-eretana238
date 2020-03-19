@@ -21,7 +21,7 @@ load: play.elf
 clean:
 	rm -f *.o *.elf
 
-main.o: led.h switches.h main.c
+main.o: led.h switches.h buzzer.h main.c
 
 led.o: led.c led.h switches.h
 
@@ -32,4 +32,6 @@ p1_interrupt_handler.o: switches.h
 stateMachines.o: led.h stateMachines.h 
 
 switches.o: switches.h switches.c
+
+buzzer.o: buzzer.h
 

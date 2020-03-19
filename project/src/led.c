@@ -46,14 +46,9 @@ void led_init() {
 }
 
 void led_update() {
-  char ledFlags;
   if(led_changed){
-    if (blinking_state) {
-      ledFlags = redVal[red_on] | greenVal[green_on];
-    }
-    else {
-      ledFlags = greenVal[green_on];
-    }
+    char ledFlags = redVal[red_on] | greenVal[green_on];
+    
     P1OUT &= (0xff^LEDS) | ledFlags; // clear bit for off leds
     P1OUT |= ledFlags;		     // set bit for on leds
     led_changed = 0;

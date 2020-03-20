@@ -35,7 +35,6 @@ switch_interrupt_handler()
   switch_state_down2 = (p2val & SW2) ? 0 : 1; /* 0 when SW2 is up */
   switch_state_down3 = (p2val & SW3) ? 0 : 1; /* 0 when SW3 is up */
   switch_state_down4 = (p2val & SW4) ? 0 : 1; /* 0 when SW4 is up */
-
   
   // switch states
   update_state();

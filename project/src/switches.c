@@ -2,6 +2,7 @@
 #include "switches.h"
 #include "stateMachines.h"
 #include "led.h"
+#include "buzzer.h"
 
 char switch_state_down1, switch_state_down2, switch_state_down3, switch_state_down4, switch_state_changed; /* effectively boolean */
 
@@ -34,6 +35,7 @@ switch_interrupt_handler()
   switch_state_down2 = (p2val & SW2) ? 0 : 1; /* 0 when SW2 is up */
   switch_state_down3 = (p2val & SW3) ? 0 : 1; /* 0 when SW3 is up */
   switch_state_down4 = (p2val & SW4) ? 0 : 1; /* 0 when SW4 is up */
+
   
   // switch states
   update_state();
@@ -44,12 +46,20 @@ switch_interrupt_handler()
 
 /* switch states */
 void update_state() {
-  if(switch_state_down1)
+  if(switch_state_down1) {
     state = 0;
-  else if(switch_state_down2)
+    buzzer_set_period(0); /* turn off sound immediately */
+    
+  }
+  
+  else if(switch_state_down2) {
     state = 1;
-  else if(switch_state_down3)
+    buzzer_set_period(0);
+  }
+  else if(switch_state_down3) {
     state = 2;
+    buzzer_set_period(0);
+  }
   else if(switch_state_down4)
     state = 3;
 }

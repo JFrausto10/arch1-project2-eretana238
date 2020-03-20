@@ -16,8 +16,6 @@ int main(void) {
 
   buzzer_init();
 
-  soundEngine_init();
-
   enableWDTInterrupts();	/* enable periodic interrupt */
 
   or_sr(0x18);		/* CPU off, GIE on */

@@ -6,13 +6,13 @@ __interrupt_vec(WDT_VECTOR) WDT(){	/* 250 interrupts/sec */
   /* check for any updates here */
   static char blink_count = 0;
   static char time_frame;
-  int bpm =  20;
+  int bpm =  150;
   
   if(state == 0)
     time_frame = 125;
 
   else if(state == 3) /* last state */
-    time_frame = (char)((1500 / bpm));
+    time_frame = (char)((15000 / (2 * bpm)));
   
   else
     time_frame = 1;

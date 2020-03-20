@@ -23,22 +23,6 @@ void toggle_leds() {
     led_state ^= 1;
 }
 
-void led_reset() {
-  red_on = 0;
-  green_on = 0;
-}
-
-void led_red_on() {
-  red_on = 1;
-  green_on = 0;
-
-}
-
-void led_green_on() {
-  red_on = 0;
-  green_on = 1;
-}
-
 void led_init() {
   P1DIR |= LEDS;		// bits attached to leds are output
   led_changed = 1;

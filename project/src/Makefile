@@ -7,12 +7,11 @@ LDFLAGS		= -L/opt/ti/msp430_gcc/include
 #switch the compiler (for the internal make rules)
 CC              = msp430-elf-gcc
 AS              = msp430-elf-as
-AS		= $(CC)
 
 all: play.elf 
 
 #additional rules for files
-play.elf: ${COMMON_OBJECTS} main.o stateMachines.o led.o wdInterruptHandler.o switches.o stateMachines.o p1_interrupt_handler.o buzzer.o soundEngine.o ../lib/libTimer.a
+play.elf: ${COMMON_OBJECTS} main.o stateMachines.o led.o wdInterruptHandler.o switches.o stateMachines.o p1_interrupt_handler.o buzzer.o soundEngine.o switchStates.o ../lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 load: play.elf

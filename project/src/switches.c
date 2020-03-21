@@ -7,6 +7,7 @@
 char switch_state_down1, switch_state_down2, switch_state_down3, switch_state_down4, switch_state_changed; /* effectively boolean */
 
 char state;
+void update_state();
 
 static char 
 switch_update_interrupt_sense() {

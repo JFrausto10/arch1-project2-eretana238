@@ -20,12 +20,12 @@ void state_advance() {
       break;
     case 1:
       blinking_state = 0; /* 0 == dimming lights */
-      led_red_on();
+      toggle_red();
       song_state = 0;
       break;
     case 2:
       blinking_state = 0; /* 0 == dimming lights */
-      led_green_on();
+      toggle_green();
       song_state = 0;
       break;
     case 3:

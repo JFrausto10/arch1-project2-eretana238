@@ -10,6 +10,9 @@ extern char led_state;
 extern unsigned char red_on, green_on;
 extern unsigned char led_changed;
 
+void toggle_red();
+void toggle_green();
+
 void toggle_leds();
 void led_init();
 void led_update();

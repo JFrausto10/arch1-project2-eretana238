@@ -8,25 +8,6 @@ char switch_state_down1, switch_state_down2, switch_state_down3, switch_state_do
 
 char state;
 
-/* switch states */
-void update_state() {
-  if(switch_state_down1) {
-    state = 0;
-    buzzer_set_period(0); /* turn off sound immediately */    
-  }
-  
-  else if(switch_state_down2) {
-    state = 1;
-    buzzer_set_period(0);
-  }
-  else if(switch_state_down3) {
-    state = 2;
-    buzzer_set_period(0);
-  }
-  else if(switch_state_down4)
-    state = 3;
-}
-
 static char 
 switch_update_interrupt_sense() {
   char p2val = P2IN;

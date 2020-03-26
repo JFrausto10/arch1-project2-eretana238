@@ -18,7 +18,7 @@ __interrupt_vec(WDT_VECTOR) WDT(){	/* 250 interrupts/sec */
     time_frame = 1;
 
   if (++blink_count == time_frame) {
-      state_advance();
-      blink_count = 0;
-    }
+    state_advance();
+    blink_count = 0;
+  }
 }

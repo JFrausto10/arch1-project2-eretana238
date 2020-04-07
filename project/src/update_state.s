@@ -1,5 +1,50 @@
 	.arch msp430g2553
+
+	.global state
 	
+	.text
+JT:
+	.word case0
+	.word case1
+	.word case2
+	.word case3
+	.word default
+
+	.global state_advance
+state_advance:
+	mov.b state, r13
+	;; TODO: compare if state is within range
+	add r13, r13
+	mov JT(r13), r0
+case0:
+	mov.b #1, blinking_state
+	call #toggle_leds
+	mov #0, &song_state
+	jmp break
+case1:
+	mov.b #0, blinking_state
+	call #toggle_red
+	mov #0, &song_state
+	jmp break
+case2:
+	mov.b #0, blinking_state
+	call #toggle_green
+	mov #0, &song_state
+	jmp break
+case3:
+	mov.b #1, blinking_state
+	call #toggle_leds
+	call #play_song
+	jmp break
+
+default:
+	
+break:
+	mov.b #1, led_changed
+	call #led_update
+	ret
+	
+
 	.text
 	.global update_state
 update_state:
@@ -24,39 +69,3 @@ fi3:
 end:	
 	ret
 
-	.text
-	.global state_advance
-state_advance:
-	cmp.b #0, state
-	jz case_0
-	cmp.b #1, state
-	jz case_1
-	cmp.b #2, state
-	jz case_2
-	cmp.b #3, state
-	jz case_3
-case_0:
-	mov.b #0, blinking_state
-	call #toggle_leds
-	mov #0, song_state
-	jmp break
-case_1:
-	mov.b #0, blinking_state
-	call #toggle_red
-	mov #0, song_state
-	jmp break
-case_2:
-	mov.b #0, blinking_state
-	call #toggle_green
-	mov #0, song_state
-	jmp break
-case_3:	
-	mov.b #1, blinking_state
-	call #toggle_leds
-	call #play_song
-	jmp break
-	
-break:	mov.b #1, led_changed
-	call #led_update
-	ret
-	

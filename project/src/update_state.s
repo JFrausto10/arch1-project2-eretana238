@@ -1,6 +1,4 @@
 	.arch msp430g2553
-
-	.global state
 	
 	.text
 JT:
@@ -11,25 +9,26 @@ JT:
 	.word default
 
 	.global state_advance
-state_advance:
-	mov.b state, r13
-	;; TODO: compare if state is within range
-	add r13, r13
-	mov JT(r13), r0
+state_advance:	
+	mov.b state, r12
+	cmp.b #4, state
+	jnc default
+	add r12, r12
+	mov JT(r12), r0
 case0:
 	mov.b #1, blinking_state
 	call #toggle_leds
-	mov #0, &song_state
+	mov #0, song_state
 	jmp break
 case1:
 	mov.b #0, blinking_state
 	call #toggle_red
-	mov #0, &song_state
+	mov #0, song_state
 	jmp break
 case2:
 	mov.b #0, blinking_state
 	call #toggle_green
-	mov #0, &song_state
+	mov #0, song_state
 	jmp break
 case3:
 	mov.b #1, blinking_state

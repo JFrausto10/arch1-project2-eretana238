@@ -4,7 +4,7 @@
 #include "soundEngine.h"
 #include "buzzer.h"
 
-char state = 0; /* general state switched when pressing another button */
+char state;
 char blinking_state; /* either blinking slow (1) or really fast (0) */
 
 char switch_state_down1, switch_state_down2, switch_state_down3, switch_state_down4;

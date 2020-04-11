@@ -1,5 +1,6 @@
 	.arch msp430g2553
-	
+	.data
+
 	.text
 JT:
 	.word default	 
@@ -12,7 +13,7 @@ JT:
 state_advance:	
 	mov.b state, r12
 	cmp.b #5, state
-	jhs default
+	jc default
 	add r12, r12
 	mov JT(r12), r0
 case1:

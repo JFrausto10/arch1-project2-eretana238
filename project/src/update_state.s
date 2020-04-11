@@ -2,35 +2,35 @@
 	
 	.text
 JT:
-	.word case0
+	.word default	 
 	.word case1
 	.word case2
 	.word case3
-	.word default
+	.word case4
 
 	.global state_advance
 state_advance:	
 	mov.b state, r12
-	cmp.b #4, state
-	jnc default
+	cmp.b #5, state
+	jhs default
 	add r12, r12
 	mov JT(r12), r0
-case0:
+case1:
 	mov.b #1, blinking_state
 	call #toggle_leds
 	mov #0, song_state
 	jmp break
-case1:
+case2:
 	mov.b #0, blinking_state
 	call #toggle_red
 	mov #0, song_state
 	jmp break
-case2:
+case3:
 	mov.b #0, blinking_state
 	call #toggle_green
 	mov #0, song_state
 	jmp break
-case3:
+case4:
 	mov.b #1, blinking_state
 	call #toggle_leds
 	call #play_song
@@ -43,28 +43,4 @@ break:
 	call #led_update
 	ret
 	
-
-	.text
-	.global update_state
-update_state:
-	cmp.b #0, switch_state_down1
-	jz fi
-	mov.b #0, state
-	call #buzzer_set_period
-fi:
-	cmp.b #0, switch_state_down2
-	jz fi2
-	mov.b #1, state
-	call #buzzer_set_period
-fi2:
-	cmp.b #0, switch_state_down3
-	jz fi3
-	mov.b #2, state
-	call #buzzer_set_period
-fi3:
-	cmp.b #0, switch_state_down4
-	jz end
-	mov.b #3, state
-end:	
-	ret
 

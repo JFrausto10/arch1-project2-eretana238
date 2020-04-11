@@ -7,7 +7,6 @@
 char switch_state_down1, switch_state_down2, switch_state_down3, switch_state_down4, switch_state_changed; /* effectively boolean */
 
 char state;
-void update_state();
 
 static char 
 switch_update_interrupt_sense() {
@@ -36,9 +35,15 @@ switch_interrupt_handler()
   switch_state_down2 = (p2val & SW2) ? 0 : 1; /* 0 when SW2 is up */
   switch_state_down3 = (p2val & SW3) ? 0 : 1; /* 0 when SW3 is up */
   switch_state_down4 = (p2val & SW4) ? 0 : 1; /* 0 when SW4 is up */
+
+  state = (p2val & SW1) ? state : 1;
+  state = (p2val & SW2) ? state : 2;
+  state = (p2val & SW3) ? state : 3;
+  state = (p2val & SW4) ? state : 4;
   
-  // switch states
-  update_state();
+  if(state != 4)
+    buzzer_set_period(0);
+  
 
   switch_state_changed = 1;
   led_update();

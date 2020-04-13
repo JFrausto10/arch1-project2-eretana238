@@ -10,10 +10,9 @@ JT:
 
 	.global state_advance
 state_advance:
-	mov.b #5, r13
 	mov.b state, r12
-	cmp.b r12, r13
-	jlo default
+	cmp.b #5, state
+	jc default
 	add r12, r12
 	mov JT(r12), r0
 case1:

@@ -20,6 +20,12 @@ To start using this project, please go through the following:
 ../project/src> make
 ```
 
+Alternatively you can just run `make all` to compile `timerLib` and `src` like so:
+
+```
+../project> make all
+```
+
 ## How to run
 
 Most of the setup is done! Now the toy only lacks the program to run. To upload the program into the `MSP430` do:
@@ -33,4 +39,10 @@ Congrats! By this point, the toy should now be working!
 
 To use your `MSP430` press any switches that you would like. And have fun!
 
-*Something to notice, the first three switches involve playing with the leds, while the last switch plays a cool tune.*
+* Fist switch: blinks led back and forth between green and red constantly
+
+* Second switch: dims red led
+
+* Third switch: dims green led
+
+* Fourth switch: blinks leds at the pace of a tune, can you guess what song is playing?

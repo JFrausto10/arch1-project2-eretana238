@@ -10,6 +10,7 @@ char state;
 
 static char redVal[] = {0, LED_RED}, greenVal[] = {0, LED_GREEN};
 
+/* toggles leds by turning on one led and turning off the other on every state change */
 void toggle_leds() {
   switch (led_state) {
     case 0: 
@@ -30,7 +31,7 @@ void led_init() {
 }
 
 void led_update() {
-  if(led_changed){
+  if(led_changed) {
     char ledFlags = redVal[red_on] | greenVal[green_on];
     
     P1OUT &= (0xff^LEDS) | ledFlags; // clear bit for off leds

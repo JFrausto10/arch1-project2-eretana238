@@ -12,6 +12,7 @@ char switch_state_down1, switch_state_down2, switch_state_down3, switch_state_do
 
 short song_state;
 
+/* the function below was translated to assembly */
 /*
 void state_advance() {
 

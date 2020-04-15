@@ -36,13 +36,14 @@ switch_interrupt_handler()
   switch_state_down3 = (p2val & SW3) ? 0 : 1; /* 0 when SW3 is up */
   switch_state_down4 = (p2val & SW4) ? 0 : 1; /* 0 when SW4 is up */
 
+  /* updates states based on which switch is pressed */
   state = (p2val & SW1) ? state : 1;
   state = (p2val & SW2) ? state : 2;
   state = (p2val & SW3) ? state : 3;
   state = (p2val & SW4) ? state : 4;
   
   if(state != 4)
-    buzzer_set_period(0);
+    buzzer_set_period(0); /* resets buzzer if another state is selected */
   
 
   switch_state_changed = 1;
